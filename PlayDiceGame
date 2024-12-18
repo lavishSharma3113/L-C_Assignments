@@ -1,0 +1,19 @@
+import random
+
+def rollDice(diceSides):
+    return random.randint(1, diceSides)
+
+def playDiceGame():
+    diceSides = 6
+    continuePlaying = True
+    
+    while continuePlaying:
+        userInput = input("Press Enter to roll the dice (or 'Q' to quit): ")
+        if userInput.lower() == 'q':
+            continuePlaying = False
+        else:
+            diceOutcome = rollDice(diceSides)
+            print(f"You rolled a {diceOutcome}")
+
+
+playDiceGame()
