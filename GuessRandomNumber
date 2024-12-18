@@ -1,0 +1,30 @@
+import random
+
+def isValidGuess(userInput):
+    return userInput.isdigit() and 1 <= int(userInput) <= 100
+
+def playNumberGuessingGame():
+    minGuessNumber = 1
+    maxGuessNumber = 100
+    targetNumber = random.randint(minGuessNumber, maxGuessNumber)
+    isGameWon = False
+    numberOfGuesses = 0
+    userGuess = input("Guess a number between 1 and 100: ")
+    while not isGameWon:
+        if not isValidGuess(userGuess):
+            userGuess = input("Invalid input. Please enter a number between 1 to 100: ")
+            continue
+        
+        numberOfGuesses += 1
+        currentGuess = int(userGuess)
+
+        if currentGuess < targetNumber:
+            userGuess = input("Too low. Guess again: ")
+        elif currentGuess > targetNumber:
+            userGuess = input("Too High. Guess again: ")
+        else:
+            print(f"You guessed it in {numberOfGuesses} guesses!")
+            isGameWon = True
+
+
+playNumberGuessingGame()
