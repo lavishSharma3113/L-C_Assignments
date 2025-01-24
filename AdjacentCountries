@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class AdjacentCountries {
 
     private static final Map<String, List<String>> COUNTRY_MAP = createCountryMap();
 
