@@ -1,23 +1,32 @@
 import java.util.*;
 
-public class AdjacentCountries {
+public class Main {
 
     private static final Map<String, List<String>> COUNTRY_MAP = createCountryMap();
 
     public static void main(String[] args) {
-        Scanner inputScanner = new Scanner(System.in);
-        displayWelcomeMessage();
-
-        while (true) {
+        getCountryCode();
+    }
+    
+    private static void getCountryCode() {
+         Scanner inputScanner = new Scanner(System.in);
+        printWelcomeMessage();
+        int choice=1;
+        while (choice == 1) {
             String countryCode = getInputCountryCode(inputScanner);
-            if (isExitCommand(countryCode)) {
-                displayExitMessage();
+            printAdjacentCountries(countryCode);
+            System.out.println("Do You want to continue? Press 1 to continue or any key  to exit");
+            try{
+            choice = inputScanner.nextInt();
+            inputScanner.nextLine();
+            if(choice != 1){
                 break;
             }
-            displayAdjacentCountries(countryCode);
+            } catch(Exception e){break;}
         }
 
         inputScanner.close();
+        printExitMessage();
     }
 
     private static Map<String, List<String>> createCountryMap() {
@@ -30,10 +39,9 @@ public class AdjacentCountries {
         return countryMap;
     }
 
-    private static void displayWelcomeMessage() {
+    private static void printWelcomeMessage() {
         System.out.println("Welcome to the Adjacent Countries Finder!\n");
         System.out.println("Type a country code (e.g., IN, US, NZ) to find its adjacent countries.");
-        System.out.println("Type 'exit' to quit the program.");
     }
 
     private static String getInputCountryCode(Scanner scanner) {
@@ -41,15 +49,12 @@ public class AdjacentCountries {
         return scanner.nextLine().toUpperCase().trim();
     }
 
-    private static boolean isExitCommand(String input) {
-        return "EXIT".equals(input);
-    }
 
-    private static void displayExitMessage() {
+    private static void printExitMessage() {
         System.out.println("Exiting the program. Goodbye!");
     }
 
-    private static void displayAdjacentCountries(String countryCode) {
+    private static void printAdjacentCountries(String countryCode) {
         if (COUNTRY_MAP.containsKey(countryCode)) {
             System.out.println("\nAdjacent countries for " + countryCode + ":");
             List<String> adjacentCountries = COUNTRY_MAP.get(countryCode);
