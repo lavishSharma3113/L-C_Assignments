@@ -1,0 +1,36 @@
+using System;
+
+class CalculatePrefixArrayAverage {
+    static void Main(string[] args) {
+        var queryAndArraySizeInput = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+        int arraySize = queryAndArraySizeInput[0];
+        int queryCount = queryAndArraySizeInput[1];
+        var arr = Array.ConvertAll(Console.ReadLine().Split(' '), long.Parse);
+        long[] prefixSumArray = createPrefixSumArray(arr, arraySize);
+        
+        for (var x = 0; x < queryCount; x++) {
+            var queryRange = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            int left = queryRange[0];
+            int right = queryRange[1];
+            long queryResult = calculateQueryResult(prefixSumArray, left, right);
+            printQueryResult(queryResult);
+        }
+    }
+    
+    static long calculateQueryResult(long[] sumarr, int left, int right) {
+        return (sumarr[right] - sumarr[left - 1]) / (right - left + 1);
+    }
+    
+    static long[] createPrefixSumArray(long[] originalArray, int arraySize) {
+        long[] sumarr = new long[arraySize + 1];
+        sumarr[0] = 0;
+        for (int i = 1; i <= arraySize; i++) {
+            sumarr[i] = sumarr[i - 1] + originalArray[i - 1];
+        }
+        return sumarr;
+    }
+    
+    static void printQueryResult(long result) {
+        Console.WriteLine(result);
+    }
+}
