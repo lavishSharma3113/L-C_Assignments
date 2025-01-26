@@ -1,0 +1,81 @@
+class Book {
+ 
+    function getTitle() {
+        return "A Great Book";
+    }
+ 
+    function getAuthor() {
+        return "John Doe";
+    }
+ 
+    function turnPage() {
+        // pointer to next page
+    }
+ 
+    function getCurrentPage() {
+        return "current page content";
+    }
+ 
+    function getLocation() {
+        // returns the position in the library
+        // ie. shelf number & room number
+    }
+
+    function save() {
+        $filename = '/documents/'. $this->getTitle(). ' - ' . $this->getAuthor();
+        file_put_contents($filename, serialize($this));
+    }
+}
+
+Book class doesn't follow the srp as turnPage() and getCurrentPage() is doing task which is different from the book class like getTitle() and getAuthor()
+save() and getLocation() also violates the srp as they are doing the operation which is not related to the book class.
+
+class BookInfomation {
+
+ function getTitle() {
+        return "A Great Book";
+    }
+ 
+    function getAuthor() {
+        return "John Doe";
+    }
+}
+
+class BookRead {
+
+    function turnPage() {
+        // pointer to next page
+    }
+ 
+    function getCurrentPage() {
+        return "current page content";
+    }
+}
+
+class BookLocation {
+
+    function getBookShelfNumber() {
+     // return the shelf number of book
+    }
+    
+    function getBookRoomNumber() {
+     // return the room number of book
+    }
+}
+
+class BookSaver {
+ 
+   function save(BookInformation bookData) {
+        String filename = "/documents/" + bookData.getTitle() + " - " + bookData.getAuthor();
+        file_put_contents($filename, serialize(bookData));
+
+   }
+
+}
+
+class Book {
+
+    BookInfomation metadata;
+    BookRead reader;
+    BookLocation location;
+}
