@@ -32,7 +32,12 @@ public class CustomerSearch
         return query.ToList();
     }
 
-    public string ExportToCSV(List<Customer> customers)
+   
+}
+
+public class CustomerExporter {
+    
+     public string ExportToCSV(List<Customer> customers)
     {
         StringBuilder csvBuilder = new StringBuilder();
         foreach (var customer in customers)
@@ -46,4 +51,10 @@ public class CustomerSearch
         }
         return csvBuilder.ToString();
     }
+}
+
+public class CustomerService {
+    private  CustomerSearch customerSearch;
+    private  CustomerExporter exporter;
+
 }
