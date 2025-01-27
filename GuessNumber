@@ -18,7 +18,7 @@ def guessNumber():
             totalGuesses+=1
             inputNumber=int(inputNumber)
         
-        if(isGuessedCorrectly(inputNumber,randomNumber)):
+        if(isCorrectGuess(inputNumber,randomNumber)):
             printSuccessMessage(totalGuesses)
             isGuessed=True
         elif isNumberSmall(inputNumber,randomNumber):
@@ -33,7 +33,7 @@ def isNumberSmall(inputNumber , randomNumber):
 def takeInput(printMessage):
     return input(printMessage)
 
-def isGuessedCorrectly(inputNumber,randomNumber):
+def isCorrectGuess(inputNumber,randomNumber):
     if(inputNumber == randomNumber):
         return True
     return False    
