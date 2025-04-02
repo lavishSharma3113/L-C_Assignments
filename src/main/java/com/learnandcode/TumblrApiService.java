@@ -17,7 +17,7 @@ public class TumblrApiService {
             connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/json");
-            connection.setConnectTimeout(5000); // 5 seconds timeout
+            connection.setConnectTimeout(5000);
             connection.setReadTimeout(5000);
 
             int responseCode = connection.getResponseCode();

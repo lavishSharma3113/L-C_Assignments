@@ -13,10 +13,7 @@ public class JsonParserService {
             throw new Exception("Unexpected response format from Tumblr API.");
         }
     }
-
-    /**
-     * Parses a cleaned JSON string into a JSONObject.
-     */
+    
 
     public JSONObject parseJson(String cleanJson) {
         return new JSONObject(cleanJson);
