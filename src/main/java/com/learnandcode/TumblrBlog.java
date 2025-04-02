@@ -2,11 +2,7 @@ package com.learnandcode;
 
 import org.json.JSONObject;
 
-import java.net.HttpURLConnection;
-import java.net.URL;
-import java.util.Scanner;
-
-public class TumblrImageFetcher {
+public class TumblrBlog {
     public static void main(String[] args) {
         UserInputService userInputService = new UserInputService();
         TumblrApiService tumblrApiService = new TumblrApiService();
