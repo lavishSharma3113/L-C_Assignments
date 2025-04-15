@@ -1,0 +1,27 @@
+package Assignment1;
+Public Class Employee {
+
+    string name;
+    
+     int age;
+    
+     float salary;
+    
+    public : string getName();
+    
+    void setName(string name);
+    
+     int getAge();
+    
+    void setAge(int age);
+    
+    float getSalary();
+    
+    void setSalary(float salary);
+    
+     };
+    
+    Employee employee;
+
+    //Answer - Employee is a Data Structure as it has only instance variable and getter 
+    // and setter. Object are those which has a function which will perform some responsiblity. 
